@@ -47,7 +47,18 @@ if __name__ == "__main__":
       continue
 
     html = open(downloaded_file).read()
+    if (html == ""):
+        continue
     
     parsed_html = BeautifulSoup(html, features="lxml")
-    print(parsed_html.find('title').text)
-    print(parsed_html.find('meta', attrs={'property':'rnews:datePublished'})['content'])
+    #print(downloaded_file)
+    #print(parsed_html.find('title').text)
+    #print(parsed_html.find('time'))
+    if ('-sport-' in downloaded_file):
+        continue
+        #print(parsed_html.find('meta', attrs={'property':'rnews:datePublished'})['content'])
+    elif('-news-' in downloaded_file):
+        continue
+        #print(parsed_html.find('div', attrs={'class':'date date--v2'})['data-datetime'])
+    else:
+        print(downloaded_file)

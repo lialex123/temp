@@ -116,7 +116,7 @@ def DownloadUrl(url, downloads_dir, timestamp_exactness, max_attempts=5, timeout
       if req.status_code == requests.codes.ok:
         content = req.text.encode(req.encoding)
         with open(downloads_dir+"/"+htmlfileid, 'w') as f:
-          f.write(content)
+          f.write(content.decode("utf-8"))
         return content
       elif (req.status_code in [301, 302, 404, 503]
             and attempts == max_attempts - 1):
